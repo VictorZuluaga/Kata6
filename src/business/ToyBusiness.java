@@ -2,31 +2,16 @@
 package business;
 
 import toyproduct.Toy;
-import toyproduct.models.AmericanHelicopterToy;
-import toyproduct.models.AmericanCarToy;
-import toys.SerialNumberGenerator;
+import factories.ToyFactory;
 
-public abstract class ToyBusiness {
+public class ToyBusiness {
     
-    protected final SerialNumberGenerator generator = new SerialNumberGenerator();
-    public abstract Toy createToy(String type);
-    /*public Toy createToy(String type){
-        switch(type){
-            case "car":
-                AmericanCarToy car = new AmericanCarToy(this.generator.next());
-                car.pack();
-                car.label();
-                return car;
-                
-            case "helicopter":
-                AmericanHelicopterToy helicopter = new AmericanHelicopterToy(this.generator.next());
-                helicopter.pack();
-                helicopter.label();
-                return helicopter;
-                
-            default:
-                return null;
-        }
-        
-    }*/
+    private final ToyFactory toyFactory;
+    
+    public ToyBusiness(ToyFactory toyFactory){
+        this.toyFactory = toyFactory;
+    }
+    public Toy produceToy(String type){
+        return this.toyFactory.produceToy(type);
+    }
 }
