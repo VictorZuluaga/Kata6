@@ -24,6 +24,7 @@ public class AmericanHelicopterToy implements Toy{
     
     @Override
     public void label(){
+        
         System.out.printf("labelling '%s' '%d'\n", this.type, this.serialNumber);
     }
     @Override
