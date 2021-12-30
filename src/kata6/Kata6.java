@@ -2,6 +2,8 @@ package kata6;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import toyproduct.models.*;
+import toyproduct.*;
 import toys.*;
 
 
@@ -10,8 +12,7 @@ public class Kata6 {
     public static void main(String[] args) {
         
         ToyBusiness business = new ToyBusiness();
-        ArrayList<Car> cars = new ArrayList<>();
-        ArrayList<Helicopter> helicopters = new ArrayList<>();
+        ArrayList<Toy> toys = new ArrayList<>();
         
         Scanner in = new Scanner(System.in);
         String line = "";
@@ -20,19 +21,12 @@ public class Kata6 {
             line = in.nextLine();
             
             switch(line){
-                case "car":
-                    cars.add(business.createCar());
-                    System.out.println(
-                        "built cars: "+cars.stream()
-                                .map(c -> c.getSerialNumber().toString())
-                                .collect(Collectors.joining(", ")));
-                    break;
-                    
+                    case "car":
                     case "helicopter":
-                    helicopters.add(business.createHelicopter());
+                    toys.add(business.createToy(line));
                     System.out.println(
-                        "built helicopters: "+helicopters.stream()
-                                .map(c -> c.getSerialNumber().toString())
+                        "built toys: "+toys.stream()
+                                .map(c -> c.toString())
                                 .collect(Collectors.joining(", ")));
                     break;
                     
@@ -41,7 +35,7 @@ public class Kata6 {
                         break;
                         
                     default:
-                        System.out.println("command unknown");
+                        System.out.println("command unknown!");
                     
                 
             }
